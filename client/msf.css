@@ -5,6 +5,16 @@ body {
   padding: 20px;
 }
 
+.filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .footer {
+  display: flex;
+  flex-direction: row;
   background-color: #971152;
+  justify-content: space-between;
 }
