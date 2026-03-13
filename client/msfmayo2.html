@@ -25,14 +25,30 @@
     <section class="home-page">
         <header class="topbar">
                 <div class="small-logo">
-                    <img src="../images/logo3.png" alt=" MSF logo">
+                    <img src="../images/logo3.png" alt="MSF logo">
                 </div>
 
                 <nav class ="nav-links">
-                    <a href="#"> Hem </a> 
-                    <a href="#"> Filmer</a>
-                    <a href ="#"> Nyheter</a>
+                    <a href="#">Home</a> 
+                    <a href="#">Movies</a>
+                    <a href ="#">New</a>
                 </nav>
+                <div class="search-filter-area">
+                    <input type="text" id="searchInput" placeholder=" Seach movie...">
+
+                    <button id ="filterbutton">Filter</button>
+
+                    <div class="filter-menu" id="filterMenu">
+                    <button class="filter-option" data-filter="all">All</button>
+                    <button class="filter-option" data-filter="action">Action</button>
+                    <button class="filter-option" data-filter="sci-fi">Sci-fi</button>
+                    <button class="filter-option" data-filter="drama">Drama</button>
+                    <button class="filter-option" data-filter="crime">Crime</button>
+                    <button class="filter-option" data-filter="thriller">Thriller</button>
+                    </div>
+
+                </div>
+
         </header>
 
         <main class="content">
@@ -230,8 +246,58 @@
         <p>Address: Storgatan 10, 60611, Stockholm, Sweden</p>
         <p>Instagram: @moviesuperfinder</p>
         <h2>[copyright pic]</h2>
-    </div>
+    </footer>
+
+        <div class="filter-modal" id="filterModal">
+            <div class="filter-modal-content"> 
+                <button class="close-filter-button" id="closeFilterModal">&times;</button>
+                <h2>Filter</h2>
+
+                <div class="filter-group">
+                    <h3>Genre</h3>
+                    <div class="filter-buttons">
+                    <button class="filter-option" data-filter="all">All</button>
+                    <button class="filter-option" data-filter="action">Action</button>
+                    <button class="filter-option" data-filter="sci-fi">Sci-fi</button>
+                    <button class="filter-option" data-filter="drama">Drama</button>
+                    <button class="filter-option" data-filter="crime">Crime</button>
+                    <button class="filter-option" data-filter="thriller">Thriller</button>
+                </div>
+
+
+                <div class="filter-group">
+                    <h3>Year</h3>
+                    <div class="filter-buttons">
+                        <button class="year-filter" data-year>"all">All </button>
+                        <button class="year-filter" data-year>"old">Old movies </button>
+                        <button class="year-filter" data-year>"new">New movies</button>
+                    </div>
+                </div>
+
+                <div class="filter-group" > 
+                    <h3> Rating </h3>
+                    <div class="filter-buttons">
+                    <button class="rating-filter" data-rating="all">All</button>
+                    <button class="rating-filter" data-rating="high">High ratings</button>
+                    <button class="rating-filter" data-rating="low">Low ratings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="movieModal">
+            <div class="modal-content"> 
+                <button class="close-button" id="closeModal">&times;</button>
+                <img id="modalImg" src="" alt="Movie Poster">
+                <div class ="modal-text"> 
+                    <h2 id="modalTitle">Title</h2>
+                    <p><strong> Year:</strong><span id="modalyear"></span></p>
+                    <p id="modalDesc"></p>
+                </div> 
+            </div>
+        </div>
+
+        <sqript src="msf.js"></sqript>
 
 </body>
-
 </html>
