@@ -36,7 +36,7 @@
                 <div class="search-filter-area">
                     <input type="text" id="searchInput" placeholder=" Seach movie...">
 
-                    <button id ="filterbutton">Filter</button>
+                    <button id="filterbutton">Filter</button>
 
                     <div class="filter-menu" id="filterMenu">
                     <button class="filter-option" data-filter="all">All</button>
@@ -68,7 +68,7 @@
                         <div class="movie-card"
                         data-title="Inception"
                         data-year="2010"
-                        data-gengre="Sci-fi / Thriller"
+                        data-genre="Sci-fi / Thriller"
                         data-desc="En tjuv som stjäl hemligheter genom drömmar får sitt farligaste uppdrag hittils."
                         data-img="https://image.tmdb.org/t/p/w500/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg"> 
                         <img src="https://image.tmdb.org/t/p/w500/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg" alt="Inception">
@@ -78,7 +78,7 @@
                         <div class="movie-card"
                         data-title="The Batman"
                         data-year="2022"
-                        data-gengre="Action / Crime"
+                        data-genre="Action / Crime"
                         data-desc="Batman undersöker korruption i Gotham medan en seriemördare terroriserar staden."
                         data-img="https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg"> 
                         <img src="https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg" alt="The Batman">
@@ -122,7 +122,7 @@
             <section class =" movie-row-section">
                 <h2>Action</h2>
                 <div class="movie-row">
-                        <div class="movie card"
+                        <div class="movie-card"
                         data-title="John Wick"
                         data-year="2014"
                         data-genre="Action / Thriller"
@@ -283,6 +283,31 @@
                     <button class="rating-filter" data-rating="low">Low ratings</button>
                     </div>
                 </div>
+
+                <div class="filter-group">
+                    <h3>Bechel score</h3>
+                    <div class="bechdel-score-group">
+                        <label class="bechdel-option">
+                            <input type="radio" name="bechdelScore" value="0">
+                            <span>0</span>
+                        </label>
+
+                        <label class="bechdel-option">
+                            <input type="radio" name="bechdelScore" value="1">
+                            <span>1</span>
+                        </label>
+
+                        <label class="bechdel-option">
+                            <input type="radio" name="bechdelScore" value="2">
+                            <span>2</span>
+                        </label>
+
+                        <label class="bechdel-option">
+                            <input type="radio" name="bechdelScore" value="3">
+                            <span>3</span>
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -292,13 +317,17 @@
                 <img id="modalImg" src="" alt="Movie Poster">
                 <div class ="modal-text"> 
                     <h2 id="modalTitle">Title</h2>
-                    <p><strong> Year:</strong><span id="modalYear"></span></p>
+                    <p><strong>Genre:</strong>  <span id="modalGenre"></span></p>
+                    <p><strong>Year:</strong>  <span id="modalYear"></span></p>
+                    <p><strong>Rating:</strong>  <span id="modalRating"></span></p>
+                    <p><strong>Bechdel score:</strong><span id="modalBScore"></span></p>
+                    <p><strong>Description:</strong></p>
                     <p id="modalDesc"></p>
                 </div> 
             </div>
         </div>
 
-        <sqript src="msf.js"></sqript>
+        <script src="msf.js"></script>
 
 </body>
 </html>
