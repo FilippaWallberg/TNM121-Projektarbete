@@ -14,7 +14,7 @@ async function loadMovies() {
     const movieContainer = document.getElementById("movie-container");
 
     if (!movieContainer) {
-      console.error("Hittade inte #movie-container i HTML");
+      console.error("Hittade inte movie-container i HTML");
       return;
     }
 
@@ -25,9 +25,9 @@ async function loadMovies() {
       card.className = "movie-card";
 
       card.innerHTML = `
-        <h3>${movie.title}</h3>
-        <p>År: ${movie.year}</p>
-        <p>Genre: ${movie.genre}</p>
+        <h3>${movie.title || "Ingen titel"}</h3>
+        <p>År: ${movie.year || "Okänt"}</p>
+        <p>Genre: ${movie.genre || "Okänd genre"}</p>
       `;
 
       movieContainer.appendChild(card);
