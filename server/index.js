@@ -1,15 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const Movie = require("./models/Movie");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 mongoose.connect("mongodb://localhost:27017/tnm121-project")
   .then(() => console.log("Connected to MongoDB"))
   .catch(err => console.error("Mongo error:", err));
-
-const Movie = require("./models/Movie");
 
 app.get("/api/health", (req, res) => {
   res.json({ ok: true });
