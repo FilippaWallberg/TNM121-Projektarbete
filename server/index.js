@@ -1,12 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 const Movie = require("./models/Movie");
+
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/media", express.static(path.join(__dirname, "..", "..", "project-material", "media")));
+
 
 mongoose.connect("mongodb://localhost:27017/tnm121-project")
   .then(() => console.log("Connected to MongoDB"))
