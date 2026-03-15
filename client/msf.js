@@ -50,10 +50,11 @@ function renderMovies(movieList, container) {
     const card = document.createElement("div");
     card.className = "movie-card";
 
+    // Tillfällig testbild just nu
+    const posterUrl = "http://127.0.0.1:3000/media/7361.png";
+
     card.innerHTML = `
-      <h3>${movie.title || "Ingen titel"}</h3>
-      <p>År: ${movie.year || "Okänt"}</p>
-      <p>Genre: ${movie.genre || "Okänd genre"}</p>
+      <img src="${posterUrl}" alt="${movie.title || 'Movie poster'}" class="movie-poster">
     `;
 
     container.appendChild(card);
