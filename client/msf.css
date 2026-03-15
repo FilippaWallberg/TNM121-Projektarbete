@@ -141,7 +141,7 @@ margin: 0 0 14px 50px;
   background: rgb(57, 57, 57);
 }
 
-movie-row::-webkit-scrollbar {
+.movie-row::-webkit-scrollbar {
   height: 8px;
 }
 
