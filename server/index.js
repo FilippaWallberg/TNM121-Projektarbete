@@ -12,7 +12,6 @@ app.use(express.json());
 
 app.use("/media", express.static(path.join(__dirname, "..", "..", "project-material", "media")));
 
-
 mongoose.connect("mongodb://localhost:27017/tnm121-project")
   .then(() => console.log("Connected to MongoDB"))
   .catch(err => console.error("Mongo error:", err));
