@@ -24,7 +24,12 @@ app.get("/api/health", (req, res) => {
 app.get("/api/movies", async (req, res) => {
   try {
     const db = mongoose.connection.db;
-    const movies = await db.collection("imdb").find({}).limit(300).toArray();
+    const movies = await db.collection("imdb")
+      .find({ year: { $gte: 2022 } })
+      .sort({ year: -1, votes: -1 })
+      .limit(500)
+      .toArray();
+
     res.json(movies);
   } catch (err) {
     res.status(500).json({ error: err.message });
