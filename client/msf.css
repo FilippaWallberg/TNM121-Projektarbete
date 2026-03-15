@@ -23,20 +23,20 @@ body.modal-open{
 .front-page{ 
   position: relative;
   min-height:100vh; 
-  background: radial-gradient(#000000 0%, rgba(20, 20, 20, 0.8) 35%, rgba(255, 60, 151, 0.82) 75% );
+  background:
+  linear-gradient( to bottom, #000000 55%, #0f0f0f 82%, #141414 100% );          
   display: flex; 
   justify-content: center; 
   align-items: center;
   text-align:center; 
+  padding:30px;
 }
 
 .front-overlay {
   position: absolute; 
-  top:0; 
-  right:0;
-  bottom:0;
-  left:0; 
-  background: radial-gradient(circle at center, rgba(255, 20, 147, 0.08), rgba(0, 0, 0, 0.95)) ;
+  inset: 0;  
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.95) 0%, rgba(255, 60, 151, 0.55) 22%, rgba(255, 60, 151, 0.18) 42%, rgba(0,0,0,0.55) 62%, rgba(0,0,0,0) 78%);
+  z-index: 78%;
 }
 
 .front-logo{
@@ -106,19 +106,19 @@ filter: drop-shadow(0 0 25px rgba(255, 20, 147, 0.45));
   opacity: 0.7;
 }
 
+.content{
+  padding-top: 20px;
+}
 
+.movie-row-section h2{
+font-size: 22.4px; 
+  margin: 0 0 14px 50px; 
+}
 
+.movie-row::
 
 
 /* filipas kod*/
-img{
-  width: 800px;
-}
-
-.front-page {
-  text-align: center;
-  
-}
 
 .logo {
   display : flex; 
