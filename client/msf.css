@@ -137,30 +137,77 @@ margin: 0 0 14px 50px;
   height: 8px;
 }
 
-.movie-row::-webkit-scrollbar {
+.movie-row::-webkit-scrollbar-thumb {
   background: rgb(57, 57, 57);
+  border-radius: 20px;
 }
 
+<<<<<<< Updated upstream
 .movie-row::-webkit-scrollbar {
   height: 8px;
+=======
+.movie-row::-webkit-scrollbar-track {
+  background: transparent;
+>>>>>>> Stashed changes
 }
 
-.movie-card:hover{
 
 
-}
-/* filipas kod*/
+/*insätt kod för alla card här*/
 
-.logo {
-  display : flex; 
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
   align-items: center;
+  z-index: 1000;
+  padding: 20px;
 }
 
-.filter {
+.modal.show {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+}
+
+.modal-content {
+  background: rgb(34, 34, 34);
+  padding: 20px;
+  border-radius: 12px;
+  max-width:900px;
+  width: 100%;
+  overflow:hidden;
+  position: relative;
+  box-shadow: 0 20px 60px rgb(0,0,0) ;
+  animation: popIn 0.25s ease;
+} 
+
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+} 
+
+.modal-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  max-height: 420px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-text {
+  margin-top: 28px;
+}
+
+.modal-text h2 {
+font-size
 }
 
 .footer {
