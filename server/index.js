@@ -23,7 +23,8 @@ app.get("/api/health", (req, res) => {
 
 app.get("/api/movies", async (req, res) => {
   try {
-    const movies = await Movie.find().limit(20);
+    const db = mongoose.connection.db;
+    const movies = await db.collection("imdb").find({}).limit(300).toArray();
     res.json(movies);
   } catch (err) {
     res.status(500).json({ error: err.message });
