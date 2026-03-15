@@ -24,7 +24,7 @@ body.modal-open{
   position: relative;
   min-height:100vh; 
   background:
-  linear-gradient( to bottom, #000000 55%, #0f0f0f 82%, #141414 100% );          
+  linear-gradient( to bottom, rgb(26, 0 , 16) 0%, rgb(36, 0 , 20) 35%,rgb(18,0,8) rgb(20, 20, 20) 100% );          
   display: flex; 
   justify-content: center; 
   align-items: center;
@@ -35,16 +35,22 @@ body.modal-open{
 .front-overlay {
   position: absolute; 
   inset: 0;  
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.95) 0%, rgba(255, 60, 151, 0.55) 22%, rgba(255, 60, 151, 0.18) 42%, rgba(0,0,0,0.55) 62%, rgba(0,0,0,0) 78%);
-  z-index: 78%;
+  background: radial-gradient(ellipse at 50% 38%, rgba(255, 70, 170, 0.88) 0%, rgba(255, 50 , 150 ,0.48) 18%, rgba(120, 0, 60, 0.28) 38%, rgba(0,0,0,0.28) 58%, rgba(0,0,0,0) 74%);
+  z-index: 1;
+}
+
+.front-content{
+  position: relative;
+  z-index: 2;
 }
 
 .front-logo{
 width: min(500px, 80vw);
 height: auto; 
 display:block;
-margin: 0 auto 20px auto; 
-filter: drop-shadow(0 0 25px rgba(255, 20, 147, 0.45)); 
+margin: 0 auto 20px; 
+filter: drop-shadow(0 0 12px rgba(255, 90, 190, 0.55))
+drop-shadow(0 0 30px rgba(255, 60, 151, 0.4));
 }
 
 .front-title{ 
@@ -61,11 +67,13 @@ filter: drop-shadow(0 0 25px rgba(255, 20, 147, 0.45));
 }
 
 .home-page{ 
-  background:
-  linear-gradient(to top,#141414 0%, rgba(20, 20, 20, 0.4) 45%, rgba(20, 20 ,20 ,0.2) 100% ),
-  url("https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat; 
+  margin-top: -2px;
   min-height: 100vh;
   padding-bottom: 60px;
+  background:
+  linear-gradient(to bottom,#141414 10%, rgba(20, 20, 20, 0.72) 22%, rgba(20, 20 ,20 ,0.38) 55%, rgba(20, 20, 20, 0.05) ),
+  url("https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat; 
+
   background-position: center;
   background-size: cover ;
   background-repeat: no-repeat; 
@@ -112,7 +120,8 @@ filter: drop-shadow(0 0 25px rgba(255, 20, 147, 0.45));
 
 .movie-row-section h2{
 font-size: 22.4px; 
-  margin: 0 0 14px 50px; 
+margin: 0 0 14px 50px; 
+
 }
 
 .movie-row::
