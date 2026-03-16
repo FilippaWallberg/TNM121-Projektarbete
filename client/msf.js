@@ -18,6 +18,26 @@ function getPosterUrl(movie) {
   return `http://127.0.0.1:3000/media/${movie.normalized_id}.png`;
 }
 
+async function loadBechdelScores() {
+  try {
+    const response = await fetch("http://127.0.0.1:3000/api/bechdel");
+
+    if (!response.ok) {
+      throw new Error("Kunde inte hämta bechdel-data");
+    }
+
+    const bechdelData = await response.json();
+
+    bechdelMap = new Map(
+      bechdelData.map(item => [Number(item.normalized_imdb_id), item.rating])
+    );
+
+    console.log("Bechdel-data laddad:", bechdelMap);
+  } catch (error) {
+    console.error("Fel vid hämtning av bechdel-data:", error);
+  }
+}
+
 async function loadMovies() {
   try {
     const response = await fetch("http://127.0.0.1:3000/api/movies");
@@ -77,6 +97,7 @@ function openMovieModal(movie) {
   const modalGenre = document.getElementById("modalGenre");
   const modalYear = document.getElementById("modalYear");
   const modalRating = document.getElementById("modalRating");
+  const modalBScore = document.getElementById("modalBScore");
   const modalDesc = document.getElementById("modalDesc");
 
   modalImg.src = getPosterUrl(movie);
@@ -87,6 +108,7 @@ function openMovieModal(movie) {
     : "Unknown";
   modalYear.textContent = movie.year ?? "Unknown";
   modalRating.textContent = movie.rating ?? "N/A";
+  modalBScore.textContent = bechdelMap.get(Number(movie.normalized_id)) ?? "N/A";
   modalDesc.textContent = movie.description || "No description available.";
 
   modal.style.display = "flex";
@@ -200,6 +222,7 @@ function setupModalEvents() {
 }
 
 async function init() {
+  await loadBechdelScores();
   await loadMovies();
   setupModalEvents();
 }
