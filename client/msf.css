@@ -114,8 +114,52 @@ drop-shadow(0 0 30px rgba(255, 60, 151, 0.4));
   opacity: 0.7;
 }
 
+.search-filter-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  }
+
+#searchInput {
+  width: 190px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: white;
+  font-size: 0.95rem;
+}
+
+#searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#filterbutton {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#filterButton:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.filter-menu {
+  display: none;
+}
+
 .content{
   padding-top: 20px;
+}
+
+.movie-row-section {
+  margin-bottom: 34px;
 }
 
 .movie-row-section h2{
@@ -140,20 +184,145 @@ margin: 0 0 14px 50px;
 .movie-row::-webkit-scrollbar-thumb {
   background: rgb(57, 57, 57);
   border-radius: 20px;
+
 }
 
-<<<<<<< Updated upstream
-.movie-row::-webkit-scrollbar {
-  height: 8px;
-=======
+
 .movie-row::-webkit-scrollbar-track {
   background: transparent;
->>>>>>> Stashed changes
+
 }
 
+.movie-card {
+  min-width: 220px;
+  max-width: 220px;
+  flex: 0 0 auto;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.25s ease;
+}
 
+.movie-card:hover {
+  transform: scale(1.08);
+  z-index: 10;
+}
 
-/*insätt kod för alla card här*/
+.movie-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.movie-card:hidden {
+  display: none;
+}
+
+.movie-card img {
+  border-radius: 6px;
+  width: 100%;
+  height: 125px;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-card span {
+  display: block;
+  margin-top: 8px;
+  font-size: 15px;
+  color: rgb(240, 240, 240); 
+}
+.movie-card .title {
+  font-size: 18px;
+  color: white;
+  margin: 12px 0 8px;
+}
+
+.movie-card .description {
+  font-size: 14px;
+  color:  rgb(247, 247, 247);
+  margin-bottom: 12px;
+}
+
+.footer h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: rgb(255, 57, 152);
+}
+
+.footer p {
+  margin-bottom: 10px;
+  color:  rgb(240, 240, 240);
+  font-size: 15px;
+}
+
+.footer img {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 10px auto 20px auto;
+  filter: drop-shadow(0 0 12px rgba(255, 20, 145, 0.25));
+}
+
+.filter-modal {
+  position: fixed;
+  display: none;
+  inset: 0;
+  z-index: 1000;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-modal.show {
+  display: flex;
+}
+
+.filter-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  padding: 30px;
+  border-radius: 16px;
+  background: rgb(21, 21, 21);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  animation: popIn 0.25s ease;
+}
+
+.filter-modal-content h2 {
+  margin-bottom: 24px;
+  font-size: 32px;
+  color: rgb(255,46,168);
+}
+
+.filter-group {
+  margin-bottom: 24px;
+}
+
+.filter-group h3 {
+  margin-bottom: 12px;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-option,
+.year-filter,
+.rating-filter {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;; 
+}
 
 .modal {
   position: fixed;
@@ -206,13 +375,3 @@ margin: 0 0 14px 50px;
   margin-top: 28px;
 }
 
-.modal-text h2 {
-font-size
-}
-
-.footer {
-  display: flex;
-  flex-direction: row;
-  background-color: #971152;
-  justify-content: space-between;
-}
