@@ -29,11 +29,11 @@ async function loadBechdelScores() {
     const bechdelData = await response.json();
 
     bechdelMap = new Map(
-      bechdelData.map(item => [Number(item.normalized_imdb_id), item.rating])
+        bechdelData.data.map(item => [Number(item.normalized_imdb_id), item.rating])
     );
 
     console.log("Bechdel-data laddad:", bechdelMap);
-  } catch (error) {
+} catch (error) {
     console.error("Fel vid hämtning av bechdel-data:", error);
   }
 }
@@ -107,8 +107,8 @@ function openMovieModal(movie) {
     ? movie.genre.join(", ")
     : "Unknown";
   modalYear.textContent = movie.year ?? "Unknown";
-  modalRating.textContent = movie.rating ?? "N/A";
-  modalBScore.textContent = bechdelMap.get(Number(movie.normalized_id)) ?? "N/A";
+  modalRating.textContent = movie.rating ?? "0";
+  modalBScore.textContent = bechdelMap.get(Number(movie.normalized_id)) ?? "0";
   modalDesc.textContent = movie.description || "No description available.";
 
   modal.style.display = "flex";

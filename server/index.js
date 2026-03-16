@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 const Movie = require("./models/Movie");
+const bechdelData = require("../../project-material/data-import/data/bechdel.json");
 
 
 const app = express();
@@ -24,9 +25,9 @@ app.get("/api/movies", async (req, res) => {
   try {
     const db = mongoose.connection.db;
     const movies = await db.collection("imdb")
-      .find({ year: { $gte: 2022 } })
+      .find({})
       .sort({ year: -1, votes: -1 })
-      .limit(500)
+      .limit(5000)
       .toArray();
 
     res.json(movies);
@@ -34,6 +35,7 @@ app.get("/api/movies", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
 
 app.post("/api/movies", async (req, res) => {
   try {
