@@ -470,7 +470,7 @@ background-color: rgb(255,46,168);
   z-index: 2
 }
 
-.bechdel.score-group{
+.bechdel-score-group{
   display: flex; 
   flex-wrap: wrap;
   align-items:center;

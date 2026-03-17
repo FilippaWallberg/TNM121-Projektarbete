@@ -2,9 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
-const Movie = require("./models/Movie");
-const bechdelData = require("../../project-material/data-import/data/bechdel.json");
-
+const bechdelData = require("/mnt/data/bechdel.json");
 
 const app = express();
 
@@ -21,26 +19,63 @@ app.get("/api/health", (req, res) => {
   res.json({ ok: true });
 });
 
+app.get("/api/bechdel", (req, res) => {
+  res.json(bechdelData);
+});
+
 app.get("/api/movies", async (req, res) => {
   try {
     const db = mongoose.connection.db;
-    const movies = await db.collection("imdb")
+    const imdbMovies = await db.collection("imdb")
       .find({})
       .sort({ year: -1, votes: -1 })
       .limit(5000)
       .toArray();
 
+    const bechdelMap = new Map(
+      bechdelData.data.map(item => [
+        Number(item.normalized_imdb_id),
+        Number(item.rating)
+      ])
+    );
+
+    let movies = imdbMovies.map(movie => ({
+      ...movie,
+      bechdelScore: bechdelMap.get(Number(movie.normalized_id)) ?? null
+    }));
+
+    const { genre, yearGroup, rating, bechdelScore } = req.query;
+
+    if (genre && genre !== "all") {
+      movies = movies.filter(movie =>
+        Array.isArray(movie.genre) &&
+        movie.genre.some(g => g.toLowerCase() === genre.toLowerCase())
+      );
+    }
+
+    if (yearGroup === "new") {
+      movies = movies.filter(movie => Number(movie.year) >= 2019);
+    }
+
+    if (yearGroup === "old") {
+      movies = movies.filter(movie => Number(movie.year) <= 2018);
+    }
+
+    if (rating === "high") {
+      movies = movies.filter(movie => Number(movie.rating) >= 7);
+    }
+
+    if (rating === "low") {
+      movies = movies.filter(movie => Number(movie.rating) < 7);
+    }
+
+    if (bechdelScore !== undefined && bechdelScore !== "") {
+      movies = movies.filter(
+        movie => Number(movie.bechdelScore) === Number(bechdelScore)
+      );
+    }
+
     res.json(movies);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-
-app.post("/api/movies", async (req, res) => {
-  try {
-    const movie = await Movie.create(req.body);
-    res.status(201).json(movie);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
