@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
-const bechdelData = require("/mnt/data/bechdel.json");
+const bechdelData = require(path.join(__dirname, "..", "data-import", "data", "bechdel.json"));
 
 const app = express();
 
