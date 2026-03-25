@@ -304,14 +304,53 @@ function setupModalEvents() {
   });
 }
 
+function resetToHomePage() {
+  activeFilters = {
+    genre: "all",
+    yearGroup: "all",
+    rating: "all",
+    bechdelScore: ""
+  };
+
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
+
+  if (searchInput) searchInput.value = "";
+  if (searchResults) {
+    searchResults.innerHTML = "";
+    searchResults.classList.remove("show");
+  }
+
+  renderHomeSections();
+
+  document.querySelector(".home-page")?.scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function setupNavLinks() {
+  const moviesLink = document.getElementById("moviesLink");
+  const footerMoviesLink = document.getElementById("footerMoviesLink");
+
+  moviesLink?.addEventListener("click", (event) => {
+    event.preventDefault();
+    resetToHomePage();
+  });
+
+  footerMoviesLink?.addEventListener("click", (event) => {
+    event.preventDefault();
+    resetToHomePage();
+  });
+}
+
 async function init() {
   await loadMovies();
   setupSearch();
   setupModalEvents();
   setupFilterEvents();
+  setupNavLinks();
 }
 
 init();
-
 
 
