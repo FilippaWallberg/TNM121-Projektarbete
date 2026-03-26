@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
-const bechdelData = require(path.join(__dirname, "..", "data-import", "data", "bechdel.json"));
+const bechdelData = require(path.join(__dirname, "..", "data-import","bechdel.json"));
 
 const app = express();
 
@@ -80,7 +80,6 @@ app.get("/api/movies", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
 
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
