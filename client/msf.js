@@ -243,7 +243,7 @@ function closeFilterModal() {
 }
 
 function setupFilterEvents() {
-  const filterButton = document.getElementById("filterbutton");
+  const filterButton = document.getElementById("filterButton");
   const closeFilterModalBtn = document.getElementById("closeFilterModal");
   const filterModal = document.getElementById("filterModal");
 
